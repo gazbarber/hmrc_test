@@ -30,7 +30,7 @@ public class ShoppingCart {
 		return outputCartReceipt(shoppingCartItems, calculatedSubTotal, calculatedOffersDiscountValue);
 	}
 	
-	public List<ShoppingItemsEnum> getShoppingCartItems(final String orderItems[]){
+	private List<ShoppingItemsEnum> getShoppingCartItems(final String orderItems[]){
 		List<ShoppingItemsEnum> shoppingCartItems = new ArrayList<ShoppingItemsEnum>();
 		for(String item: orderItems){
 			if(validCartItems.contains(item)){
@@ -43,16 +43,16 @@ public class ShoppingCart {
 		return shoppingCartItems;
 	}
 	
-	public double calculateSubTotal(final List<ShoppingItemsEnum> shoppingCartItems){
+	private double calculateSubTotal(final List<ShoppingItemsEnum> shoppingCartItems){
 		double subTotal = 0;
-		for(ShoppingItemsEnum item: ShoppingItemsEnum.values()){
-			int frequency = Collections.frequency(shoppingCartItems, item);
-			subTotal += frequency*item.getValue();
+		for(ShoppingItemsEnum item: shoppingCartItems){
+			
+			subTotal += item.getValue();
 		}
 		return subTotal;
 	}
 	
-	public String outputCartReceipt(final List<ShoppingItemsEnum> shoppingCartItems, double subTotal, double discountTotal){
+	private String outputCartReceipt(final List<ShoppingItemsEnum> shoppingCartItems, double subTotal, double discountTotal){
 		String result = ("[");
 		
 		for(int i = 0; i<shoppingCartItems.size();i++){
