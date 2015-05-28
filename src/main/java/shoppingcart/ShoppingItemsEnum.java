@@ -4,9 +4,14 @@ public enum ShoppingItemsEnum {
 
 	Apple(0.60), Orange(0.25);
 
-	double value;
+	private double value;
 	
 	ShoppingItemsEnum(double value){
 		this.value = value;
 	}
+
+	public double getValue() {
+		return value;
+	}
+	
 }

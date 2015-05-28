@@ -23,8 +23,8 @@ public class ShoppingCart {
 		
 		//convert the shopping items into a collection of known shopping items 
 		List<ShoppingItemsEnum> shoppingCartItems = getShoppingCartItems(orderItems);
-		
-		return outputCartReceipt(shoppingCartItems, calculateSubTotal(shoppingCartItems), offerCalculator.calculateOffersDiscountValue(shoppingCartItems));
+		double total = calculateSubTotal(shoppingCartItems)-offerCalculator.calculateOffersDiscountValue(shoppingCartItems);
+		return outputCartReceipt(shoppingCartItems, total);
 	}
 	
 	public List<ShoppingItemsEnum> getShoppingCartItems(final String orderItems[]){
@@ -49,7 +49,7 @@ public class ShoppingCart {
 		return subTotal;
 	}
 	
-	public String outputCartReceipt(final List<ShoppingItemsEnum> shoppingCartItems, double subTotal, double discountTotal){
+	public String outputCartReceipt(final List<ShoppingItemsEnum> shoppingCartItems, double total){
 		String result = ("[");
 		
 		for(int i = 0; i<shoppingCartItems.size();i++){
@@ -58,16 +58,8 @@ public class ShoppingCart {
 					result+=(", ");
 			}
 		}
-		if(discountTotal>0){
-		result += ("] => Sub Total £"
-				+String.format( "%.2f",subTotal));
-		result += (", offer discounts £"+String.format( "%.2f",discountTotal));
-		result += (" ==> Grant Total £"+String.format( "%.2f",subTotal-discountTotal));
-		}
-		else{
-			result += ("] => £"
-					+String.format( "%.2f",subTotal));
-		}
-		return result;
+		
+		return result += ("] => £"
+				+String.format( "%.2f",total));
 	}
 }

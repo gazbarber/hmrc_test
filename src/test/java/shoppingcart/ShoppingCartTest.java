@@ -26,14 +26,45 @@ public class ShoppingCartTest {
 	public void applesTest() {
 		String[] apples = {"Apple","Apple"};
 		String result = cart.processShoppingItems(apples);
-		assertEquals(result,"[Apple, Apple] => £1.20");
+		assertEquals("[Apple, Apple] => £0.60", result);
+		
+		String[] moreApples = {"Apple","Apple","Apple"};
+		result = cart.processShoppingItems(moreApples);
+		assertEquals("[Apple, Apple, Apple] => £1.20", result);
+	
+		String[] evenMoreApples = {"Apple","Apple","Apple","Apple"};
+		result = cart.processShoppingItems(evenMoreApples);
+		assertEquals("[Apple, Apple, Apple, Apple] => £1.20", result);
+		
+		String[] cantBelieveTheresMoreApples = {"Apple","Apple","Apple","Apple","Apple"};
+		result = cart.processShoppingItems(cantBelieveTheresMoreApples);
+		assertEquals("[Apple, Apple, Apple, Apple, Apple] => £1.80", result);
 	}
 	
 	@Test
 	public void orangesTest() {
 		String[] oranges = {"Orange","Orange"};
 		String result = cart.processShoppingItems(oranges);
-		assertEquals(result,"[Orange, Orange] => £0.50");
+		assertEquals("[Orange, Orange] => £0.50", result);
+		
+		String[] offerOranges = {"Orange","Orange","Orange"};
+		result = cart.processShoppingItems(offerOranges);
+		assertEquals("[Orange, Orange, Orange] => £0.50", result);
+		
+
+		String[] moreOranges = {"Orange","Orange","Orange","Orange"};
+		result = cart.processShoppingItems(moreOranges);
+		assertEquals("[Orange, Orange, Orange, Orange] => £0.75", result);
+		
+
+		String[] evenMoreOranges = {"Orange","Orange","Orange","Orange","Orange"};
+		result = cart.processShoppingItems(evenMoreOranges);
+		assertEquals("[Orange, Orange, Orange, Orange, Orange] => £1.00", result);
+		
+
+		String[] anotherOfferOranges = {"Orange","Orange","Orange","Orange","Orange","Orange"};
+		result = cart.processShoppingItems(anotherOfferOranges);
+		assertEquals("[Orange, Orange, Orange, Orange, Orange, Orange] => £1.00", result);
 	}
 
 	
@@ -41,20 +72,30 @@ public class ShoppingCartTest {
 	public void applesAndOrangesTest() {
 		String[] applesAndOranges = {"Orange","Apple","Orange"};
 		String result = cart.processShoppingItems(applesAndOranges);
-		assertEquals(result,"[Orange, Apple, Orange] => £1.10");
+		assertEquals("[Orange, Apple, Orange] => £1.10", result);
 	}
 	
 	@Test
 	public void noitemsTest() {
 		String[] noItems = {};
 		String result = cart.processShoppingItems(noItems);
-		assertEquals(result,"[] => £0.00");
+		assertEquals("[] => £0.00", result);
 	}
 	
 	@Test
 	public void invalidItemsTest() {
 		String[] invalidITems = {"123abc"};
 		String result = cart.processShoppingItems(invalidITems);
-		assertEquals(result,"[] => £0.00");
+		assertEquals("[] => £0.00", result);
+	}
+	
+	@Test
+	public void bigCart(){
+		//3 for 2 on oranges, 4 oranges in cart, pay for 3 oranges
+		//BOGOF on apples, 3 apples in cart, pay for 2 apples 
+		//3 * 0.25 + 2 * 0.60 = £1.95
+		String[] applesAndOranges = {"Orange","Apple","Orange","Apple","Apple","Orange","Orange" };
+		String result = cart.processShoppingItems(applesAndOranges);
+		assertEquals("[Orange, Apple, Orange, Apple, Apple, Orange, Orange] => £1.95", result);
 	}
 }
