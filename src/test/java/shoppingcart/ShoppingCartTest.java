@@ -1,7 +1,6 @@
 package shoppingcart;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,19 +25,19 @@ public class ShoppingCartTest {
 	public void applesTest() {
 		String[] apples = {"Apple","Apple"};
 		String result = cart.processShoppingItems(apples);
-		assertEquals("[Apple, Apple] => £0.60", result);
+		assertEquals("[Apple, Apple] => Sub Total £1.20, offer discounts £0.60 ==> Grand Total £0.60", result);
 		
 		String[] moreApples = {"Apple","Apple","Apple"};
 		result = cart.processShoppingItems(moreApples);
-		assertEquals("[Apple, Apple, Apple] => £1.20", result);
+		assertEquals("[Apple, Apple, Apple] => Sub Total £1.80, offer discounts £0.60 ==> Grand Total £1.20", result);
 	
 		String[] evenMoreApples = {"Apple","Apple","Apple","Apple"};
 		result = cart.processShoppingItems(evenMoreApples);
-		assertEquals("[Apple, Apple, Apple, Apple] => £1.20", result);
+		assertEquals("[Apple, Apple, Apple, Apple] => Sub Total £2.40, offer discounts £1.20 ==> Grand Total £1.20", result);
 		
 		String[] cantBelieveTheresMoreApples = {"Apple","Apple","Apple","Apple","Apple"};
 		result = cart.processShoppingItems(cantBelieveTheresMoreApples);
-		assertEquals("[Apple, Apple, Apple, Apple, Apple] => £1.80", result);
+		assertEquals("[Apple, Apple, Apple, Apple, Apple] => Sub Total £3.00, offer discounts £1.20 ==> Grand Total £1.80", result);
 	}
 	
 	@Test
@@ -49,22 +48,22 @@ public class ShoppingCartTest {
 		
 		String[] offerOranges = {"Orange","Orange","Orange"};
 		result = cart.processShoppingItems(offerOranges);
-		assertEquals("[Orange, Orange, Orange] => £0.50", result);
+		assertEquals("[Orange, Orange, Orange] => Sub Total £0.75, offer discounts £0.25 ==> Grand Total £0.50", result);
 		
 
 		String[] moreOranges = {"Orange","Orange","Orange","Orange"};
 		result = cart.processShoppingItems(moreOranges);
-		assertEquals("[Orange, Orange, Orange, Orange] => £0.75", result);
+		assertEquals("[Orange, Orange, Orange, Orange] => Sub Total £1.00, offer discounts £0.25 ==> Grand Total £0.75", result);
 		
 
 		String[] evenMoreOranges = {"Orange","Orange","Orange","Orange","Orange"};
 		result = cart.processShoppingItems(evenMoreOranges);
-		assertEquals("[Orange, Orange, Orange, Orange, Orange] => £1.00", result);
+		assertEquals("[Orange, Orange, Orange, Orange, Orange] => Sub Total £1.25, offer discounts £0.25 ==> Grand Total £1.00", result);
 		
 
 		String[] anotherOfferOranges = {"Orange","Orange","Orange","Orange","Orange","Orange"};
 		result = cart.processShoppingItems(anotherOfferOranges);
-		assertEquals("[Orange, Orange, Orange, Orange, Orange, Orange] => £1.00", result);
+		assertEquals("[Orange, Orange, Orange, Orange, Orange, Orange] => Sub Total £1.50, offer discounts £0.50 ==> Grand Total £1.00", result);
 	}
 
 	
@@ -96,6 +95,6 @@ public class ShoppingCartTest {
 		//3 * 0.25 + 2 * 0.60 = £1.95
 		String[] applesAndOranges = {"Orange","Apple","Orange","Apple","Apple","Orange","Orange" };
 		String result = cart.processShoppingItems(applesAndOranges);
-		assertEquals("[Orange, Apple, Orange, Apple, Apple, Orange, Orange] => £1.95", result);
+		assertEquals("[Orange, Apple, Orange, Apple, Apple, Orange, Orange] => Sub Total £2.80, offer discounts £0.85 ==> Grand Total £1.95", result);
 	}
 }
