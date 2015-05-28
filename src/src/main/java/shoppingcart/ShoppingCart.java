@@ -3,6 +3,7 @@ package shoppingcart;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -53,7 +54,12 @@ public class ShoppingCart {
 	}
 	
 	public double calculateTotal(final List<ShoppingItemsEnum> shoppingCartItems){
-		return 0;
+		double total = 0;
+		for(ShoppingItemsEnum item: ShoppingItemsEnum.values()){
+			int frequency = Collections.frequency(shoppingCartItems, item);
+			total += frequency*item.value;
+		}
+		return total;
 	}
 	
 }

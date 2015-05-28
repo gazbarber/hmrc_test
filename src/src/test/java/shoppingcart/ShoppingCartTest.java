@@ -41,7 +41,7 @@ public class ShoppingCartTest {
 	public void applesAndOrangesTest() {
 		String[] applesAndOranges = {"Orange","Apple","Orange"};
 		String result = cart.processShoppingItems(applesAndOranges);
-		assertEquals(result,"[Orange, Apple, Orange] => £1.45");
+		assertEquals(result,"[Orange, Apple, Orange] => £1.10");
 	}
 	
 	@Test
