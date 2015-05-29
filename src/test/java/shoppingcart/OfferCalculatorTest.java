@@ -1,7 +1,6 @@
 package shoppingcart;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public class OfferCalculatorTest {
 	
 	@Test
 	public void apples2for1Test() {
-		List apples = new ArrayList();
+		List<ShoppingItemsEnum> apples = new ArrayList<ShoppingItemsEnum>();
 		apples.add(ShoppingItemsEnum.Apple);
 		apples.add(ShoppingItemsEnum.Apple);
 		//2 apples for the price of 1 so the discount will be £0.50
@@ -31,7 +30,7 @@ public class OfferCalculatorTest {
 	
 	@Test
 	public void oranges3or2Test() {
-		List oranges = new ArrayList();
+		List<ShoppingItemsEnum> oranges = new ArrayList<ShoppingItemsEnum>();
 		oranges.add(ShoppingItemsEnum.Orange);
 		oranges.add(ShoppingItemsEnum.Orange);
 		oranges.add(ShoppingItemsEnum.Orange);
@@ -49,7 +48,7 @@ public class OfferCalculatorTest {
 	
 	@Test
 	public void appleSingleTest() {
-		List apples = new ArrayList();
+		List<ShoppingItemsEnum> apples = new ArrayList<ShoppingItemsEnum>();
 		apples.add(ShoppingItemsEnum.Apple);
 		double result = offerCalculator.calculateOffersDiscountValue(apples);
 		assertEquals(0d, result,  Double.MIN_VALUE);
@@ -57,7 +56,7 @@ public class OfferCalculatorTest {
 	
 	@Test
 	public void appleMoreThanOfferTest() {
-		List apples = new ArrayList();
+		List<ShoppingItemsEnum> apples = new ArrayList<ShoppingItemsEnum>();
 		apples.add(ShoppingItemsEnum.Apple);
 		apples.add(ShoppingItemsEnum.Apple);
 		apples.add(ShoppingItemsEnum.Apple);
@@ -75,7 +74,7 @@ public class OfferCalculatorTest {
 	
 	@Test
 	public void orangeLessthanOfferTest() {
-		List oranges = new ArrayList();
+		List<ShoppingItemsEnum> oranges = new ArrayList<ShoppingItemsEnum>();
 		oranges.add(ShoppingItemsEnum.Orange);
 		double result = offerCalculator.calculateOffersDiscountValue(oranges);
 		assertEquals(0d, result,  Double.MIN_VALUE);
@@ -88,7 +87,7 @@ public class OfferCalculatorTest {
 	
 	@Test
 	public void orangeMorethanOfferTest() {
-		List oranges = new ArrayList();
+		List<ShoppingItemsEnum> oranges = new ArrayList<ShoppingItemsEnum>();
 		oranges.add(ShoppingItemsEnum.Orange);
 		oranges.add(ShoppingItemsEnum.Orange);
 		oranges.add(ShoppingItemsEnum.Orange);
